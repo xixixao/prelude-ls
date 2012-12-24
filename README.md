@@ -1,6 +1,4 @@
-# prelude.ls
-is a JavaScript functional programming library. It is the recommended base library for, and is written in, <a href="http://gkz.github.com/LiveScript/">LiveScript</a>. It is based in part off of Haskell's Prelude module.
+# prelude.coffee
+is a JavaScript functional programming library. It is written for and in, <a href="http://coffeescript.org/">CoffeeScript</a>. It is a fork of prelude.ls, LiveScript's excellent recommended base library, which is based in part off of Haskell's Prelude module.
 
-See **[the prelude.ls site](http://gkz.github.com/prelude-ls/)** for examples, a reference, and more.
-
-You can install via npm `npm install prelude-ls`
+You can install it by cloning this repo or copying the precompiled JS files.

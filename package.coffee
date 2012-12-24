@@ -1,0 +1,32 @@
+name    : 'prelude-coffee'
+version : '0.1.0'
+
+description : "prelude.coffee is a JavaScript functional programming library. It is written for and in CoffeeScript. It is a mutated clone of LiveScript's prelude.js which in turn is based of Haskell's Prelude module."
+keywords    : [
+  'library'
+  'prelude'
+  'livescript'
+  'coffeescript'
+  'javascript'
+  'coffee'
+]
+
+author   : 'Michal Srb <xixixao@seznam.cz>'
+homepage : 'http://gkz.github.com/prelude-ls/'
+bugs     : 'https://github.com/gkz/prelude-ls/issues'
+licenses : [
+  type: 'MIT', url: 'https://raw.github.com/gkz/prelude-ls/master/LICENSE'
+]
+
+engines     : node: '>= 0.8.0'
+files       : [
+  'prelude.js'
+  'prelude-browser.js'
+  'prelude-browser-min.js'
+  'README.md'
+  'LICENSE'
+]
+
+main : './prelude.js'
+
+repository: type: 'git', url: 'git://github.com/xixixao/prelude-coffee.git'

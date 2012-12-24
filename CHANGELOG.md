@@ -1,3 +1,18 @@
+
+# 0.7.0
+* initial release
+* renamed `sortBy` to `sortWith`
+* added `sortBy`, passes function to compare
+* added `plus`, `minus`, `times`, `over`, `equals` (different from Prelude.ls 0.1.0)
+* added `extend`, copies properties from one object onto another (aka import, $.extend)
+* added `median`, complements `mean`
+* added `phi`, the golden ratio
+* revived `partial`, `lookup`, `call`, `pluck`, `elem`, `notElem`
+* `call` can pass arguments along
+* browser version is RequireJS compatible
+
+# Prelude.ls ChangeLog:
+
 # 0.6.0
 * fixed various bugs
 * added `fix`, a fixpoint (Y combinator) for anonymous recursive functions
