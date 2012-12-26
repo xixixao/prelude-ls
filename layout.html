@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>prelude.coffee - a JavaScript functional programming library - for and in CoffeeScript</title>
+<meta name='description' content="prelude.coffee is a JavaScript functional programming library.">
+
+<!--<link rel="icon" type="image/png" href="images/icon.png">-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<link href="bootstrap/themes/cerulean.bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+
+<script src="google-code-prettify/prettify.js"></script>
+<link href="google-code-prettify/prettify.css" rel="stylesheet">
+<script src="lang-ls.js"></script>
+
+
+<link href="styles.css" rel="stylesheet">
+</head>
+<body data-spy="scroll">
+<div class="site container-fluid">
+  <div class="row side-row">
+    <div class="span4 sidebar">
+      <h1><a href="#">prelude.coffee</a></h1>
+      <ul class="nav nav-pills">
+        <li class="active"><a href="#overview">Overview</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li class="blank"><a>&nbsp;</a>
+        <li class="blank"><a>&nbsp;</a>
+        <li><a href="#f-map">map</a></li>
+        <li><a href="#f-filter">filter</a></li>
+        <li><a href="#f-reject">reject</a></li>
+        <li><a href="#f-partition">partition</a></li>
+        <li><a href="#f-find">find</a></li>
+        <li><a href="#f-each">each</a></li>
+        <li><a href="#f-head">head</a></li>
+        <li><a href="#f-tail">tail</a></li>
+        <li><a href="#f-last">last</a></li>
+        <li><a href="#f-initial">initial</a></li>
+        <li><a href="#f-empty">empty</a></li>
+        <li><a href="#f-values">values</a></li>
+        <li><a href="#f-keys">keys</a></li>
+        <li><a href="#f-length">length</a></li>
+        <li><a href="#f-cons">cons</a></li>
+        <li><a href="#f-append">append</a></li>
+        <li><a href="#f-join">join</a></li>
+        <li><a href="#f-reverse">reverse</a></li>
+        <li><a href="#f-fold">fold</a></li>
+        <li><a href="#f-fold1">fold1</a></li>
+        <li><a href="#f-foldr">foldr</a></li>
+        <li><a href="#f-foldr1">foldr1</a></li>
+        <li><a href="#f-unfold">unfold</a></li>
+        <li><a href="#f-andList">andList</a></li>
+        <li><a href="#f-orList">orList</a></li>
+        <li><a href="#f-any">any</a></li>
+        <li><a href="#f-all">all</a></li>
+        <li><a href="#f-unique">unique</a></li>
+        <li><a href="#f-sort">sort</a></li>
+        <li><a href="#f-sortBy">sortBy</a></li>
+        <li><a href="#f-compare">compare</a></li>
+        <li><a href="#f-sum">sum</a></li>
+        <li><a href="#f-product">product</a></li>
+        <li><a href="#f-mean">mean</a></li>
+        <li><a href="#f-concat">concat</a></li>
+        <li><a href="#f-concatMap">concatMap</a></li>
+        <li><a href="#f-maximum">maximum</a></li>
+        <li><a href="#f-minimum">minimum</a></li>
+        <li><a href="#f-scan">scan</a></li>
+        <li><a href="#f-scan1">scan1</a></li>
+        <li><a href="#f-scanr">scanr</a></li>
+        <li><a href="#f-scanr1">scanr1</a></li>
+        <li><a href="#f-replicate">replicate</a></li>
+        <li><a href="#f-take">take</a></li>
+        <li><a href="#f-drop">drop</a></li>
+        <li><a href="#f-splitAt">splitAt</a></li>
+        <li><a href="#f-takeWhile">takeWhile</a></li>
+        <li><a href="#f-dropWhile">dropWhile</a></li>
+        <li><a href="#f-span">span</a></li>
+        <li><a href="#f-breakIt">breakIt</a></li>
+        <li><a href="#f-listToObj">listToObj</a></li>
+        <li><a href="#f-toMap">toMap</a></li>
+        <li><a href="#f-typeOf">typeOf</a></li>
+        <li><a href="#f-zip">zip</a></li>
+        <li><a href="#f-zipWith">zipWith</a></li>
+        <li><a href="#f-zipAll">zipAll</a></li>
+        <li><a href="#f-zipAllWith">zipAllWith</a></li>
+        <li><a href="#f-compose">compose</a></li>
+        <li><a href="#f-curry">curry</a></li>
+        <li><a href="#f-id">id</a></li>
+        <li><a href="#f-flip">flip</a></li>
+        <li><a href="#f-fix">fix</a></li>
+        <li><a href="#f-lines">lines</a></li>
+        <li><a href="#f-unlines">unlines</a></li>
+        <li><a href="#f-words">words</a></li>
+        <li><a href="#f-unwords">unwords</a></li>
+        <li><a href="#f-max">max</a></li>
+        <li><a href="#f-min">min</a></li>
+        <li><a href="#f-plus">plus</a></li>
+        <li><a href="#f-minus">minus</a></li>
+        <li><a href="#f-times">times</a></li>
+        <li><a href="#f-over">over</a></li>
+        <li><a href="#f-equals">equals</a></li>
+        <li><a href="#f-negate">negate</a></li>
+        <li><a href="#f-abs">abs</a></li>
+        <li><a href="#f-signum">signum</a></li>
+        <li><a href="#f-quot">quot</a></li>
+        <li><a href="#f-rem">rem</a></li>
+        <li><a href="#f-div">div</a></li>
+        <li><a href="#f-mod">mod</a></li>
+        <li><a href="#f-recip">recip</a></li>
+        <li><a href="#f-pi">pi</a></li>
+        <li><a href="#f-tau">tau</a></li>
+        <li><a href="#f-exp">exp</a></li>
+        <li><a href="#f-sqrt">sqrt</a></li>
+        <li><a href="#f-ln">ln</a></li>
+        <li><a href="#f-pow">pow</a></li>
+        <li><a href="#f-sin">sin</a></li>
+        <li><a href="#f-cos">cos</a></li>
+        <li><a href="#f-tan">tan</a></li>
+        <li><a href="#f-asin">asin</a></li>
+        <li><a href="#f-acos">acos</a></li>
+        <li><a href="#f-atan">atan</a></li>
+        <li><a href="#f-atan2">atan2</a></li>
+        <li><a href="#f-truncate">truncate</a></li>
+        <li><a href="#f-round">round</a></li>
+        <li><a href="#f-ceil">ceil</a></li>
+        <li><a href="#f-floor">floor</a></li>
+        <li><a href="#f-isItNaN">isItNaN</a></li>
+        <li><a href="#f-even">even</a></li>
+        <li><a href="#f-odd">odd</a></li>
+        <li><a href="#f-gcd">gcd</a></li>
+        <li><a href="#f-lcm">lcm</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4">&nbsp;</div>
+    <div class="span8 content">
+      <div id="overview" class="section">
+        <a name="overview"></a>
+        <h2>Overview</h2>
+        <p>prelude.coffee is a JavaScript functional programming library. It is written for and in, <a href="http://coffeescript.org/">CoffeeScript</a>. It is a fork of prelude.ls, LiveScript's excellent recommended base library, which is based in part off of Haskell's Prelude module.
+        <div class="major-actions">
+          <h3 class="download">0.7.0</h3>
+          <!--<a href="https://github.com/gkz/prelude-ls/zipball/0.6.0"><div class="btn btn-large btn">zip</div></a>
+          <a href="https://github.com/gkz/prelude-ls/tarball/0.6.0"><div class="btn btn-large btn">tar.gz</div></a>-->
+          <a href="https://raw.github.com/xixixao/prelude-ls/master/prelude-browser-min.js"><div class="btn btn-large btn">browser-min.js</div></a>
+          <a href="https://github.com/xixixao/prelude-ls"><div class="btn btn-large btn-primary">View project on GitHub</div></a>
+          <iframe src="http://ghbtns.com/github-btn.html?user=xixixao&repo=prelude-ls&type=watch&size=large&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="140" height="40"></iframe>
+        </div>
+        <!--<p>Install via <a href="http://npmjs.org">npm</a>: <strong><code>npm install prelude-ls</code></strong>-->
+        <h3>Functions come last</h3>
+        <p>As in the popular JQuery library and in the tradition of CoffeeScript's syntax supporting it, callables come last in the argument list.
+        <div class="example">
+          <div class="example-ls">
+
+<pre class="prettyprint lang-ls">
+scan1 [1..4], (x, y) ->
+  (x + y) / x
+#=> [1, 3, 2, 3]
+</pre>
+          </div>
+          <div class="example-js">
+
+<pre class="prettyprint lang-js">
+zipWith(['A', 'J'], ['V', 'M'], function (a, b) {
+  return a + ' and ' + b
+}) //=> ['A and V', 'J and M']
+</pre>
+          </div>
+        </div>
+        <h3>Objects map to objects, strings map to strings</h3>
+        <p>When it makes sense, working on an object will return an object, and a string will return a string.
+        <div class="example">
+          <div class="example-ls">
+
+<pre class="prettyprint lang-ls">
+filter {a: 3, b: 4, c: 5, d: 6}, even
+#=> {b: 4, d: 6}
+</pre>
+          </div>
+          <div class="example-js">
+
+<pre class="prettyprint lang-js">
+map({d: 3, e: 4}, function (x) { return x * 2; });
+//=> {d: 6, e: 8}
+</pre>
+          </div>
+        </div>
+        <h3>Most functions are not curried</h3>
+        <p>Because CoffeeScript does not have bult-in support for declaring curried functions and because functions are easilly declarable lambdas, only a few special functions return a partially applied function.
+        <div class="example">
+          <div class="example-ls">
+
+<pre class="prettyprint lang-ls">
+sum = fold 0, plus
+sum [1..3] #=> 6
+</pre>
+          </div>
+          <div class="example-js">
+
+<pre class="prettyprint lang-js">
+var hasX = elem('X');
+hasX('hello there Doctor X'); //=> true
+</pre>
+          </div>
+        </div>
+      </div>
+      <div id="installation" class="section">
+        <a name="installation"></a>
+          <h2>Installation</h2>
+          <p>Install via cloning from <a href="http://github.com/xixixao/prelude-ls">github</a>: <code>git clone git@github.com:xixixao/prelude-ls.git</code> into a node-modules folder and then you can require it as a standard node module.
+          <p>For the browser, just include the <code>prelude-min.js</code> file. It is a valid RequireJS module, or if you are not using RequireJS, it will install itself as <code>prelude</code> under the global namespace.
+          <p>To import all prelude.ls functions to somewhere, you can use <code>prelude.installPrelude target</code>. For instance, calling <code>prelude.installPrelude window</code> in the browser will install all the functions as global variables. In node, you can do <code>require('prelude-ls').installPrelude global</code>.
+          To import selectively, you can use typical <code>{join, concat} = prelude</code> syntax or pass in a list of functions to not include <code>prelude.installPrelude window, ['exp']</code>.
+      </div>
+      <hr>
+      <div class="section">
+        <h2>Function Reference</h2>
+        <p>Examples of usage in CoffeeScript on the left, examples using JavaScript on the right. The examples may not be related.<!-- If you want to play around with prelude.ls., take a look at the <a href="http://gkz.github.com/LiveScript/">LiveScript site</a>, it has the library preloaded for use in the compiler. In LiveScript, you may call any camel cased functions using hyphens, eg. you may use <code>concat-map</code> instead of <code>concatMap</code>.-->
+        <p>Functions which are 'curried' will return a partially applied function when called with less than the specified number of arguments. Eg. <code>plus3 = plus 3</code> and then <code>plus3 8 #=> 11</code>.
+        <p>Use the <a href="#f-toMap"><code>toMap</code></a> function to turn an object or an array into a "Function", a mapping from keys to values. "Iterable" refers to objects, arrays and strings. "List" refers to arrays and strings. Iterating over a string only works on IE8+.
+<!--REFERENCE-->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="action-buttons">
+  <div><iframe src="http://ghbtns.com/github-btn.html?user=xixixao&repo=prelude-ls&type=watch&size=small&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="25"></iframe></div>
+</div>
+<script>
+  prettyPrint();
+  $('.nav').scrollspy();
+</script>
+</body>
+</html>

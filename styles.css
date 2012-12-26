@@ -1,5 +1,8 @@
 code {
-  color: #317EAC;
+  color: #0ac;
+  background-color: #333;
+  border-style: none;
+  font-family: Consolas, monospace;
 }
 hr {
   border-top-color: #e8e8e8;
@@ -9,7 +12,14 @@ html {
 }
 body {
   height: 100%;
+  background-color: #222;
+  color: #ccc;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0ac;
+}
+
 .action-buttons {
   position: fixed;
   top: 0;
@@ -24,10 +34,8 @@ body {
   margin-left: 0;
 }
 .sidebar {
-  background-image: url('images/groovepaper.png');
-  height: 100%;
-  border-right: 1px solid #cccccc;
-  padding-top: 25px;
+  background-color: #333;
+  padding-top: 0px;
   position: fixed;
   height: 100%;
   top: 0;
@@ -35,10 +43,12 @@ body {
   bottom: 0;
   overflow-y: auto;
   margin-left: 0;
+  padding-left: 10px;
 }
 .sidebar h1 {
   margin-bottom: 20px;
   margin-left: 20px;
+  margin-top: 25px;
 }
 .sidebar h1 img {
   margin-top: -27px;
@@ -47,9 +57,9 @@ body {
 .sidebar h1 a {
   font-size: 34px;
   line-height: 40px;
-  text-shadow: #1A3A4D 0 1px 0;
-  color: #317EAC;
+  text-shadow: #222 0px 2px 3px;
 }
+
 .sidebar h1 a:hover {
   text-decoration: none;
 }
@@ -59,6 +69,12 @@ body {
 .sidebar .nav li {
   width: 25%;
 }
+
+.sidebar .nav li a {
+  padding: 6px 8px;
+  font-color: #0ac;
+}
+
 .sidebar .nav li.blank a:hover {
   background-color: inherit;
 }
@@ -99,11 +115,11 @@ body {
 .content ul {
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 18px;
-  line-height: 32px;
+  font-size: 13px;
+  line-height: 27px;
 }
 .content code {
-  font-size: 14px;
+  font-size: 12px;
 }
 .content ul li {
   margin-bottom: 10px;
@@ -116,13 +132,18 @@ body {
 .content .example {
   height: 100%;
   overflow: auto;
-  border: 1px solid #ccc;
+  border: 1px solid #dadada;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   margin-bottom: 10px;
-  background-color: #f7f7f9;
+  background-color: #ccc;
 }
+
+pre.prettyprint {
+  background-color: #ccc;
+}
+
 .content .example .source {
   display: none;
 }
@@ -132,10 +153,17 @@ body {
   height: 100%;
   border: none;
 }
+
+.content .example .example-js,
+.content .example .example-js > pre {
+  background-color: #bbb;
+}
+
 .content .example .example-ls h5,
 .content .example .example-js h5 {
   padding-top: 12px;
   padding-left: 10px;
+  color: rgb(32, 113, 161);
 }
 .content .example .example-ls  > pre,
 .content .example .example-js  > pre {
@@ -143,6 +171,8 @@ body {
   height: 100%;
   border: none;
   margin-bottom: 0;
+  font-size: 12px;
+  font-family: Consolas, monospace;
 }
 .content .example .example-ls {
   float: left;
