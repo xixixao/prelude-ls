@@ -18,7 +18,7 @@ prelude-browser.js: prelude.js
 	$(CoffeeScript) ./browsify.coffee
 
 prelude-browser-min.js: prelude-browser.js
-	$(Uglify) prelude-browser.js -o prelude-browser-min.js
+	$(Uglify) prelude-browser.js -o prelude-browser-min.js -m -r 'define'
 
 test.js: test.coffee
 	$(CoffeeScript) -c test.coffee

@@ -3,8 +3,9 @@ fs = require 'fs'
 js = fs.readFileSync "prelude.js", "utf-8"
 
 js = """(function (that) {
+  var define = that.define
   if(typeof define !== 'function') {
-    var define = function (x) {
+    define = function (x) {
       that.prelude = x;
     }
   }

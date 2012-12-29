@@ -1,6 +1,7 @@
 (function (that) {
+var define = that.define
 if(typeof define !== 'function') {
-  var define = function (x) {
+  define = function (x) {
     that.prelude = x;
   }
 }
@@ -14,10 +15,12 @@ define(function () {
     __slice = [].slice,
     __hasProp = {}.hasOwnProperty;
 
+  typeOf = {}.toString;
+
   X = {};
 
-  X.typeOf = typeOf = function(obj) {
-    return {}.toString.call(obj);
+  X.typeOf = function(obj) {
+    return typeOf.call(obj).slice(8, -1);
   };
 
   X.toMap = toMap = function(obj) {
@@ -28,7 +31,7 @@ define(function () {
 
   X.each = each = function(xs, f) {
     var key, x, _i, _len;
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       for (key in xs) {
         x = xs[key];
         f(x);
@@ -44,7 +47,7 @@ define(function () {
 
   X.map = map = function(xs, f) {
     var key, res, result, type, x;
-    type = typeOf(xs);
+    type = typeOf.call(xs);
     if (type === '[object Object]') {
       res = {};
       for (key in xs) {
@@ -72,7 +75,7 @@ define(function () {
 
   X.filter = filter = function(xs, f) {
     var key, result, type, x;
-    type = typeOf(xs);
+    type = typeOf.call(xs);
     if (type === '[object Object]') {
       result = {};
       for (key in xs) {
@@ -104,7 +107,7 @@ define(function () {
 
   X.reject = reject = function(xs, f) {
     var key, result, type, x;
-    type = typeOf(xs);
+    type = typeOf.call(xs);
     if (type === '[object Object]') {
       result = {};
       for (key in xs) {
@@ -136,7 +139,7 @@ define(function () {
 
   X.partition = partition = function(xs, f) {
     var failed, key, passed, type, x, _i, _len;
-    type = typeOf(xs);
+    type = typeOf.call(xs);
     if (type === '[object Object]') {
       passed = {};
       failed = {};
@@ -161,7 +164,7 @@ define(function () {
 
   X.find = find = function(xs, f) {
     var key, x, _i, _len;
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       for (key in xs) {
         x = xs[key];
         if (f(x)) {
@@ -181,7 +184,7 @@ define(function () {
 
   X.pluck = pluck = function(prop, xs) {
     var key, result, x, _i, _len, _results;
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       result = {};
       for (key in xs) {
         x = xs[key];
@@ -232,7 +235,7 @@ define(function () {
 
   X.empty = empty = function(xs) {
     var x;
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       for (x in xs) {
         return false;
       }
@@ -261,14 +264,14 @@ define(function () {
   };
 
   X.len = len = function(xs) {
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       xs = values(xs);
     }
     return xs.length;
   };
 
   X.cons = cons = function(x, xs) {
-    if (typeOf(xs) === '[object String]') {
+    if (typeOf.call(xs) === '[object String]') {
       return x + xs;
     } else {
       return [x].concat(xs);
@@ -276,7 +279,7 @@ define(function () {
   };
 
   X.append = append = function(xs, ys) {
-    if (typeOf(ys) === '[object String]') {
+    if (typeOf.call(ys) === '[object String]') {
       return xs + ys;
     } else {
       return xs.concat(ys);
@@ -284,14 +287,14 @@ define(function () {
   };
 
   X.join = join = function(sep, xs) {
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       xs = values(xs);
     }
     return xs.join(sep);
   };
 
   X.reverse = reverse = function(xs) {
-    if (typeOf(xs) === '[object String]') {
+    if (typeOf.call(xs) === '[object String]') {
       return (xs.split('')).reverse().join('');
     } else {
       return xs.slice().reverse();
@@ -300,7 +303,7 @@ define(function () {
 
   X.fold = fold = X.foldl = foldl = function(memo, xs, f) {
     var key, x, _i, _len;
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       for (key in xs) {
         x = xs[key];
         memo = f(memo, x);
@@ -384,7 +387,7 @@ define(function () {
   X.unique = unique = function(xs) {
     var key, result, x, _i, _len;
     result = [];
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       for (key in xs) {
         x = xs[key];
         if (__indexOf.call(result, x) < 0) {
@@ -399,7 +402,7 @@ define(function () {
         }
       }
     }
-    if (typeOf(xs) === '[object String]') {
+    if (typeOf.call(xs) === '[object String]') {
       return result.join('');
     } else {
       return result;
@@ -430,7 +433,7 @@ define(function () {
   };
 
   X.compare = compare = function(fx, y, f) {
-    if ((y != null) && (f != null)) {
+    if (arguments.length === 3) {
       if ((f(fx)) > (f(y))) {
         return 1;
       } else if ((f(fx)) < (f(y))) {
@@ -454,7 +457,7 @@ define(function () {
   X.sum = sum = function(xs) {
     var key, result, x, _i, _len;
     result = 0;
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       for (key in xs) {
         x = xs[key];
         result += x;
@@ -471,7 +474,7 @@ define(function () {
   X.product = product = function(xs) {
     var key, result, x, _i, _len;
     result = 1;
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       for (key in xs) {
         x = xs[key];
         result *= x;
@@ -511,7 +514,7 @@ define(function () {
     }
     for (_i = 0, _len = xss.length; _i < _len; _i++) {
       x = xss[_i];
-      if (!(typeOf(x) === '[object String]')) {
+      if (!(typeOf.call(x) === '[object String]')) {
         return (_ref = []).concat.apply(_ref, xss);
       }
     }
@@ -543,7 +546,7 @@ define(function () {
   X.scan = scan = X.scanl = scanl = function(memo, xs, f) {
     var key, x;
     last = memo;
-    if (typeOf(xs) === '[object Object]') {
+    if (typeOf.call(xs) === '[object Object]') {
       return [memo].concat((function() {
         var _results;
         _results = [];
@@ -592,7 +595,7 @@ define(function () {
 
   X.take = take = function(n, xs) {
     if (n <= 0) {
-      if (typeOf(xs) === '[object String]') {
+      if (typeOf.call(xs) === '[object String]') {
         return '';
       } else {
         return [];
@@ -629,7 +632,7 @@ define(function () {
       }
       result.push(x);
     }
-    if (typeOf(xs) === '[object String]') {
+    if (typeOf.call(xs) === '[object String]') {
       return result.join('');
     } else {
       return result;
@@ -686,8 +689,10 @@ define(function () {
     return xs != null ? xs[key] : void 0;
   };
 
-  X.call = call = function(key, xs) {
-    return xs != null ? typeof xs[key] === "function" ? xs[key]() : void 0 : void 0;
+  X.call = call = function() {
+    var args, key, xs, _i;
+    key = arguments[0], args = 3 <= arguments.length ? __slice.call(arguments, 1, _i = arguments.length - 1) : (_i = 1, []), xs = arguments[_i++];
+    return xs != null ? typeof xs[key] === "function" ? xs[key].apply(xs, args) : void 0 : void 0;
   };
 
   X.zip = zip = function(xs, ys) {
@@ -775,10 +780,12 @@ define(function () {
 
   X.curry = curry = function(f) {
     return function() {
-      var args;
-      args = arguments;
-      return function(x) {
-        return f.apply(null, __slice.call(args).concat([x]));
+      var initArgs;
+      initArgs = arguments;
+      return function() {
+        var args;
+        args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+        return f.apply(null, __slice.call(initArgs).concat(__slice.call(args)));
       };
     };
   };
@@ -797,10 +804,18 @@ define(function () {
     return x;
   };
 
-  X.flip = flip = function(f) {
-    return function(x, y) {
+  X.flip = flip = function(f, x, y) {
+    if (arguments.length === 3) {
       return f(y, x);
-    };
+    } else if (arguments.length === 2) {
+      return function(y) {
+        return f(y, x);
+      };
+    } else {
+      return function(x, y) {
+        return f(y, x);
+      };
+    }
   };
 
   X.fix = fix = function(f) {
@@ -1010,23 +1025,28 @@ define(function () {
     }
   };
 
-  X.extend = extend = function(to, from) {
+  X.extend = extend = function(to, from, except) {
     var key, val, _results;
+    if (except == null) {
+      except = [];
+    }
     _results = [];
     for (key in from) {
       if (!__hasProp.call(from, key)) continue;
       val = from[key];
-      _results.push(to[key] = val);
+      if (!(__indexOf.call(except, key) >= 0)) {
+        _results.push(to[key] = val);
+      }
     }
     return _results;
   };
 
   X.prelude = prelude = this;
 
-  X.installPrelude = installPrelude = function(target) {
+  X.installPrelude = installPrelude = function(target, except) {
     var _ref;
     if (!((_ref = target.prelude) != null ? _ref.isInstalled : void 0)) {
-      extend(target, X);
+      extend(target, X, except);
       return target.prelude.isInstalled = true;
     }
   };
