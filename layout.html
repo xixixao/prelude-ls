@@ -198,7 +198,7 @@ map({d: 3, e: 4}, function (x) { return x * 2; });
           <div class="example-ls">
 
 <pre class="prettyprint lang-ls">
-sum = fold 0, plus
+sum = (list) -> fold 0, list, plus
 sum [1..3] #=> 6
 </pre>
           </div>
