@@ -90,7 +90,7 @@ X.tail = tail = (xs) ->
 
 X.last = last = (xs) ->
   return undefined if not xs.length
-  xs[-1..][0]
+  xs[xs.length - 1]
 
 X.initial = initial = (xs) ->
   return undefined if not xs.length

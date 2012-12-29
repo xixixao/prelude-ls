@@ -223,7 +223,7 @@ define(function () {
     if (!xs.length) {
       return void 0;
     }
-    return xs.slice(-1)[0];
+    return xs[xs.length - 1];
   };
 
   X.initial = initial = function(xs) {
