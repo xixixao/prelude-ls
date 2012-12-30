@@ -215,7 +215,7 @@ hasX('hello there Doctor X'); //=> true
         <a name="installation"></a>
           <h2>Installation</h2>
           <p>Install via cloning from <a href="http://github.com/xixixao/prelude-ls">github</a>: <code>git clone git@github.com:xixixao/prelude-ls.git</code> into a node-modules folder and then you can require it as a standard node module.
-          <p>For the browser, just include the <code>prelude-min.js</code> file. It is a valid RequireJS module, or if you are not using RequireJS, it will install itself as <code>prelude</code> under the global namespace.
+          <p>For the browser, just include the <code>prelude-browser-min.js</code> file. It is a valid RequireJS module, or if you are not using RequireJS, it will install itself as <code>prelude</code> under the global namespace.
           <p>To import all prelude.ls functions to somewhere, you can use <code>prelude.installPrelude target</code>. For instance, calling <code>prelude.installPrelude window</code> in the browser will install all the functions as global variables. In node, you can do <code>require('prelude-ls').installPrelude global</code>.
           To import selectively, you can use typical <code>{join, concat} = prelude</code> syntax or pass in a list of functions to not include <code>prelude.installPrelude window, ['exp']</code>.
       </div>
